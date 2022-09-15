@@ -32,136 +32,60 @@ public class Main {
 
 
         StudentMap map1 = new StudentMap(1, 0.1f);
-        putMap(map1, std1, 1);
-        putMap(map1, std2, 2);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
+        putMap(map1, std1, 11);
+        putMap(map1, std2, 22);
         putMap(map1, null, null);
-        putMap(map1, null, null);
-        putMap(map1, null, null);
-        putMap(map1, null, 4);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-        putMap(map1, std3, 3);
-
-//        putMap(map1, std4, 4);
-//        putMap(map1, std5, 5);
-//        putMap(map1, std6, 6);
-//        putMap(map1, std7, 7);
-//        putMap(map1, std8, 8);
-//        putMap(map1, std9, 9);
-//        putMap(map1, std10, 10);
-//        putMap(map1, std11, 11);
-//        putMap(map1, std12, 12);
-//        putMap(map1, std13, 13);
-//        putMap(map1, std14, 14);
-//        putMap(map1, std15, 15);
-//        putMap(map1, std16, 16);
-//        putMap(map1, std17, 17);
-//        putMap(map1, std18, 18);
-//        putMap(map1, std19, 19);
-//        putMap(map1, std20, 20);
-//        putMap(map1, std21, 21);
-//        putMap(map1, std22, 22);
-
-//        putMap(map1, std1, 11);
-//        putMap(map1, std2, 22);
-//        putMap(map1, null, null);
-//        putMap(map1, std3, 33);
+        putMap(map1, std3, 33);
 
 
 
-//        System.out.println();
-//
-//        showKeysMap(map1);
-//        showValMap(map1);
-//
-//        System.out.println();
-//
-//        getMap(map1, std2);
-//
-//        System.out.println();
-//
-//        removeMap(map1, std2);
-//
-//        System.out.println();
-//
-//        showKeysMap(map1);
-//        showValMap(map1);
-//
-//        System.out.println();
-//
-//        keyInMap(map1, std1);
-//
-//        System.out.println();
-//
-//        valInMap(map1, null);
-//
-//        System.out.println();
-//
-//        StudentMap map2 = new StudentMap();
-//
-//        putMap(map2, std1, 1111);
-//        putMap(map2, std4, 2222);
-//        putMap(map2, std5, 4444);
-//
-//        mapPutMap(map1, map2);
-//
-//        System.out.println();
-//
-//        showKeysMap(map1);
-//        showValMap(map1);
-//
-//        System.out.println();
-//
-//        showKeysMap(map2);
-//        showValMap(map2);
-//
-//        System.out.println();
+        System.out.println();
+
+        showKeysMap(map1);
+        showValMap(map1);
+
+        System.out.println();
+
+        getMap(map1, std2);
+
+        System.out.println();
+
+        removeMap(map1, std2);
+
+        System.out.println();
+
+        showKeysMap(map1);
+        showValMap(map1);
+
+        System.out.println();
+
+        keyInMap(map1, std1);
+
+        System.out.println();
+
+        valInMap(map1, null);
+
+        System.out.println();
+
+        StudentMap map2 = new StudentMap();
+
+        putMap(map2, std1, 1111);
+        putMap(map2, std4, 2222);
+        putMap(map2, std5, 4444);
+
+        mapPutMap(map1, map2);
+
+        System.out.println();
+
+        showKeysMap(map1);
+        showValMap(map1);
+
+        System.out.println();
+
+        showKeysMap(map2);
+        showValMap(map2);
+
+        System.out.println();
 
 
     }
