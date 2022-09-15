@@ -1,6 +1,7 @@
 package com.endava.internship.collections;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * The class that defines the element that will be contained by your collection
@@ -22,6 +23,24 @@ public class Student //TODO consider implementing any interfaces necessary for y
     public LocalDate getDateOfBirth() { return dateOfBirth; }
 
     public String getDetails() { return details; }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Student) {
+            return Objects.equals(this.name, ((Student) obj).getName()) &&
+                    (Objects.equals(this.dateOfBirth, ((Student) obj).getDateOfBirth()));
+        }
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.name, this.dateOfBirth);
+    }
+    @Override
+    public String toString() {
+        return "Student : " + name + ", " + dateOfBirth + ". More details : " + details;
+    }
 
     /*
     TODO consider overriding any methods for this object to function properly within a collection:
