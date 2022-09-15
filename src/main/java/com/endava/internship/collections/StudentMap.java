@@ -6,6 +6,7 @@ import java.util.AbstractSet;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Set;
 import java.util.function.Consumer;
 
@@ -57,11 +58,7 @@ public class StudentMap implements Map<Student, Integer> {
         @Override
         public boolean equals(Object obj) {
             if(obj instanceof Node) {
-                Node another = ((Node) obj);
-                if(this.getKey() == null && another.getKey() == null) return true;
-                if(this.getKey() != null) {
-                    return this.getKey().equals(another.getKey());
-                }
+                return Objects.equals(this.getKey(), ((Node) obj).getKey());
             }
             return false;
         }
