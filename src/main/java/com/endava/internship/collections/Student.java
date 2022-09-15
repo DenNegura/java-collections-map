@@ -8,9 +8,9 @@ import java.util.Objects;
  */
 public class Student //TODO consider implementing any interfaces necessary for your collection
 {
-    private String name;
-    private LocalDate dateOfBirth;
-    private String details;
+    private final String name;
+    private final LocalDate dateOfBirth;
+    private final String details;
 
     public Student(String name, LocalDate dateOfBirth, String details) {
         this.name = name;
@@ -34,11 +34,11 @@ public class Student //TODO consider implementing any interfaces necessary for y
     }
 
     @Override
-    public int hashCode() {
+    public final int hashCode() {
         return Objects.hash(this.name, this.dateOfBirth);
     }
     @Override
-    public String toString() {
+    public final String toString() {
         return "Student : " + name + ", " + dateOfBirth + ". More details : " + details;
     }
 

@@ -1,13 +1,28 @@
 package com.endava.internship.collections;
 
-import java.util.*;
+
+import java.util.AbstractCollection;
+import java.util.AbstractSet;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import java.util.function.Consumer;
 
 public class StudentMap implements Map<Student, Integer> {
 
-    private final int DEFAULT_CAPACITY = 1 << 4;
-    private final int MAXIMUM_CAPACITY = 1 << 30;
-    static final float DEFAULT_LOAD_FACTOR = 0.75f;
+    private static final int DEFAULT_CAPACITY = 16;
+    private static final int MAXIMUM_CAPACITY = 1_000_000;
+    private static final float DEFAULT_LOAD_FACTOR = 0.75f;
+
+    private Node[] table;
+
+    private int size;
+
+    private final int capacity;
+
+    private final float loadFactor;
+
     final class Node {
         final int hash;
         final Student key;
@@ -20,16 +35,16 @@ public class StudentMap implements Map<Student, Integer> {
             this.value = value;
             this.next = next;
         }
-        public final Student getKey() {
+        public Student getKey() {
             return key;
         }
-        public final Integer getVal() {
+        public Integer getVal() {
             return value;
         }
-        public final int getHash() {
+        public int getHash() {
             return hash;
         }
-        public final Node getNext() {
+        public Node getNext() {
             return next;
         }
         public void setVal(Integer value) {
@@ -43,20 +58,18 @@ public class StudentMap implements Map<Student, Integer> {
         public boolean equals(Object obj) {
             if(obj instanceof Node) {
                 Node another = ((Node) obj);
-                return this.getHash() == another.getHash() &&                   // если равны по hash коду
-                        (this.getKey() == null && another.getKey() == null) ||  // проверить, не являются оба null
-                        this.getKey().equals(another.getKey());                 // или не содержат обинаковые значения
+                if(this.getKey() == null && another.getKey() == null) return true;
+                if(this.getKey() != null) {
+                    return this.getKey().equals(another.getKey());
+                }
             }
             return false;
         }
+        @Override
+        public int hashCode() {
+            return this.getHash();
+        }
     }
-    private Node[] table;
-
-    private int size;
-
-    private int capacity;
-
-    private float loadFactor;
     StudentMap(int initCapacity, float loadFactor)  {
         if(initCapacity < 0) {
             throw new IllegalArgumentException(
@@ -81,8 +94,7 @@ public class StudentMap implements Map<Student, Integer> {
     }
 
     public static int hash(Student key) {
-        int h;
-        return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
+        return (key == null) ? 0 : key.hashCode();
     }
 
     private void resize() {
