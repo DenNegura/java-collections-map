@@ -1,7 +1,6 @@
 package com.endava.internship.collections;
 
 import java.time.LocalDate;
-import java.util.*;
 
 public class Main {
     public static void main(String []args) {
@@ -10,28 +9,9 @@ public class Main {
         Student std3 = new Student("Mircea", LocalDate.of(2003, 11, 23), "mathematica");
         Student std4 = new Student("Vasile", LocalDate.of(2001, 1, 12), "romanian");
         Student std5 = new Student("Anna", LocalDate.of(2003, 2, 2), "russian");
-        Student std6 = new Student("Anna2", LocalDate.of(2003, 2, 2), "russian");
-        Student std7 = new Student("Anna3", LocalDate.of(2003, 2, 2), "russian");
-        Student std8 = new Student("Anna4", LocalDate.of(2003, 2, 2), "russian");
-        Student std9 = new Student("Anna5", LocalDate.of(2003, 2, 2), "russian");
-        Student std10 = new Student("Anna6", LocalDate.of(2003, 2, 2), "russian");
-        Student std11 = new Student("Anna7", LocalDate.of(2003, 2, 2), "russian");
-        Student std12 = new Student("Anna8", LocalDate.of(2003, 2, 2), "russian");
-        Student std13 = new Student("Anna9", LocalDate.of(2003, 2, 2), "russian");
-        Student std14 = new Student("Anna10", LocalDate.of(2003, 2, 2), "russian");
-        Student std15 = new Student("Anna11", LocalDate.of(2003, 2, 2), "russian");
-        Student std16 = new Student("Anna12", LocalDate.of(2003, 2, 2), "russian");
-        Student std17 = new Student("Anna13", LocalDate.of(2003, 2, 2), "russian");
-        Student std18 = new Student("Anna14", LocalDate.of(2003, 2, 2), "russian");
-        Student std19 = new Student("Anna15", LocalDate.of(2003, 2, 2), "russian");
-        Student std20 = new Student("Anna16", LocalDate.of(2003, 2, 2), "russian");
-        Student std21 = new Student("Anna17", LocalDate.of(2003, 2, 2), "russian");
-        Student std22 = new Student("Anna18", LocalDate.of(2003, 2, 2), "russian");
-        Student std23 = new Student("Anna19", LocalDate.of(2003, 2, 2), "russian");
 
 
-
-        StudentMap map1 = new StudentMap(1, 0.1f);
+        StudentMap map1 = new StudentMap(10, 0.8f);
         putMap(map1, std1, 11);
         putMap(map1, std2, 22);
         putMap(map1, null, null);
@@ -90,7 +70,7 @@ public class Main {
 
     }
     public static void putMap(StudentMap map, Student std, Integer val) {
-        System.out.println("[putMap] from map " + map.hashCode() + ". put value : " + map.put(std, val));
+        System.out.println("[putMap] from map " + map.hashCode() + ". return value : " + map.put(std, val));
     }
     public static void getMap(StudentMap map, Student std) {
         System.out.println("[getMap] from map " + map.hashCode() + ". get value : " + map.get(std));

@@ -192,16 +192,17 @@ public class StudentMap implements Map<Student, Integer> {
         if(size > table.length * loadFactor) {
             resize();
         }
+        Integer val = null;
         int i = node.getKey() == null ? 0 : (table.length - 1) & node.getHash();
         if(table[i] == null) {
             table[i] = node;
             size++;
         }
         else {
-            // Идти по ссылкам
             Node listNode = table[i];
             while(true) {
                 if(listNode.equals(node)) {
+                    val = listNode.getVal();
                     listNode.setVal(node.getVal());
                     break;
                 }
@@ -209,6 +210,7 @@ public class StudentMap implements Map<Student, Integer> {
                     if(listNode.getNext() == null) {
                         listNode.setNext(node);
                         size++;
+                        break;
                     }
                     else {
                         listNode = listNode.getNext();
@@ -216,7 +218,7 @@ public class StudentMap implements Map<Student, Integer> {
                 }
             }
         }
-        return node.getVal();
+        return val;
     }
     @Override
     public Integer remove(Object o) {
