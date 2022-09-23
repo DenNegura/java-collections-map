@@ -24,7 +24,7 @@ public class StudentMap implements Map<Student, Integer> {
 
     private final float loadFactor;
 
-    final class Node {
+    final static class Node {
         final int hash;
         final Student key;
         Integer value;
@@ -286,8 +286,8 @@ public class StudentMap implements Map<Student, Integer> {
                 throw new NullPointerException();
             }
             if(table != null && size > 0) {
-                for(int i = 0; i < table.length; i++) {
-                    for(Node node = table[i]; node != null; node = node.getNext()) {
+                for (Node value : table) {
+                    for (Node node = value; node != null; node = node.getNext()) {
                         action.accept(node.getKey());
                     }
                 }

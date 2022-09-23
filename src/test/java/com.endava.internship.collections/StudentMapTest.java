@@ -1,16 +1,16 @@
 package com.endava.internship.collections;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -20,19 +20,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class StudentMapTest {
 
-    public static List<Student> students;
-    StudentMap map;
-
-    @BeforeAll
-    public static void initStudents() {
-        students = new ArrayList<>();
-        students.add(new Student("Ion", LocalDate.of(2002, 5, 4), "english"));
-        students.add(new Student("Cristina", LocalDate.of(2002, 5, 5), "informatica"));
-        students.add(new Student("Mircea", LocalDate.of(2003, 11, 23), "mathematica"));
-        students.add(new Student("Vasile", LocalDate.of(2001, 1, 12), "romanian"));
-        students.add(new Student("Anna", LocalDate.of(2003, 2, 2), "russian"));
-        students.add(new Student("Diana", LocalDate.of(2004, 5, 23), "Arabian"));
-    }
+    private final static List<Student> students = Stream.of(
+            new Student("Ion", LocalDate.of(2002, 5, 4), "english"),
+            new Student("Cristina", LocalDate.of(2002, 5, 5), "informatica"),
+            new Student("Mircea", LocalDate.of(2003, 11, 23), "mathematica"),
+            new Student("Vasile", LocalDate.of(2001, 1, 12), "romanian"),
+            new Student("Anna", LocalDate.of(2003, 2, 2), "russian"),
+            new Student("Diana", LocalDate.of(2004, 5, 23), "Arabian"))
+            .collect(Collectors.toList());
+    private StudentMap map;
 
     @BeforeEach
     public void createMap() {
@@ -62,7 +58,7 @@ public class StudentMapTest {
     }
 
     @Test
-    public void whenValueIsInput_mapReturnValue() {
+    public void testGet() {
         StudentMap map = new StudentMap(2, 10f);
         map.put(students.get(0), 10);
         map.put(students.get(1), 20);
@@ -81,7 +77,7 @@ public class StudentMapTest {
     }
 
     @Test
-    public void whenValueInput_keyAndValueExist() {
+    public void testContainsKeyAndValue() {
         map.put(students.get(0), 10);
         map.put(null, null);
 
@@ -94,7 +90,7 @@ public class StudentMapTest {
     }
 
     @Test
-    public void testFromMethodRemove() {
+    public void testRemove() {
         StudentMap map = new StudentMap(2, 10f);
         map.put(students.get(0), 10);
         map.put(students.get(1), 20);
@@ -116,7 +112,7 @@ public class StudentMapTest {
     }
 
     @Test
-    public void testFromMethodClear() {
+    public void testClear() {
         map.put(students.get(0), 10);
         map.put(students.get(1), 20);
         map.put(students.get(2), 30);
@@ -224,7 +220,7 @@ public class StudentMapTest {
 
         assertEquals(countOfResize, countOfResizeMap);
     }
-    public int countResize(int countStudents, int capacity, float load) {
+    private static int countResize(int countStudents, int capacity, float load) {
         int countOfResize = 0;
         while(countStudents - 1 > capacity * load) {
             ++countOfResize;
