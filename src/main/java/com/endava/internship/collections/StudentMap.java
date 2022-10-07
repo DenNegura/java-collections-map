@@ -24,7 +24,7 @@ public class StudentMap implements Map<Student, Integer> {
 
     private final float loadFactor;
 
-    final class Node {
+    final static class Node {
         final int hash;
         final Student key;
         Integer value;
@@ -67,8 +67,8 @@ public class StudentMap implements Map<Student, Integer> {
             return this.getHash();
         }
     }
-    StudentMap(int initCapacity, float loadFactor)  {
-        if(initCapacity < 0) {
+    public StudentMap(int initCapacity, float loadFactor)  {
+        if(initCapacity < 1) {
             throw new IllegalArgumentException(
                     "Illegal initial capacity : " + initCapacity);
         }
@@ -85,7 +85,7 @@ public class StudentMap implements Map<Student, Integer> {
     StudentMap(int initCapacity) {
         this(initCapacity, DEFAULT_LOAD_FACTOR);
     }
-    StudentMap() {
+    public StudentMap() {
         this.capacity = DEFAULT_CAPACITY;
         this.loadFactor = DEFAULT_LOAD_FACTOR;
     }
@@ -140,7 +140,8 @@ public class StudentMap implements Map<Student, Integer> {
                 (o instanceof Integer || o == null)) {
             for(int i = 0; i < table.length; i++) {
                 for(Node node = table[i]; node != null; node = node.getNext()) {
-                    if(node.getVal() == o || node.getVal().equals(o)) {
+                    if(node.getVal() == o ||
+                            (node.getVal() != null && node.getVal().equals(o))) {
                         return true;
                     }
                 }
@@ -285,8 +286,8 @@ public class StudentMap implements Map<Student, Integer> {
                 throw new NullPointerException();
             }
             if(table != null && size > 0) {
-                for(int i = 0; i < table.length; i++) {
-                    for(Node node = table[i]; node != null; node = node.getNext()) {
+                for (Node value : table) {
+                    for (Node node = value; node != null; node = node.getNext()) {
                         action.accept(node.getKey());
                     }
                 }
